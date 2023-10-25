@@ -1,0 +1,9 @@
+[submodule "NN_NLP"]
+	path = NN_NLP
+	url = git@github.com:wenjie-hoo/nn_uwr_22.git
+[submodule "ICC"]
+	path = ICC
+	url = git@github.com:wenjie-hoo/icc_uwr_22.git
+[submodule "Ai"]
+	path = Ai
+	url = git@github.com:wenjie-hoo/ai_uwr_22.git
