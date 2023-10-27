@@ -21,7 +21,7 @@ def word2num(word):
                 total += current_num
                 current_num = 0
             else:
-                current_num += num
+                current_num+=num
         elif w == 'and':
             continue
         else:

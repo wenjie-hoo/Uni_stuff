@@ -18,9 +18,7 @@ def prime_functional(n):
     return list(filter(is_prime, range(2, n + 1)))
 
 def results(n):
-    return (f'prime_imperative:{prime_imperative(n)}\n \
-          prime_comprehension:{prime_comprehension(n)}\n \
-          prime_functional:{prime_functional(n)}')
+    return (f'prime_imperative:{prime_imperative(n)}\nprime_comprehension:{prime_comprehension(n)}\nprime_functional:{prime_functional(n)}')
 
 print(results(50))
 
