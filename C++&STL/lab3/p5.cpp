@@ -6,74 +6,45 @@
 */
 
 #include <iostream>
-#include <chrono>
-#include <ctime>
-#include <vector>
+#include <functional>
 
-using namespace std;
-using namespace chrono;
+// Functor to compose two functions f(g(x), h(x))
+template <typename F, typename G, typename H>
+struct compose_f_gx_hx {
+    F f;
+    G g;
+    H h;
 
-void fillMatrix(int n, vector<vector<double>> &matrix)
-{
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < n; j++)
-        {
-            double randomValue = 0.5 + (double)rand() / RAND_MAX * 1.5;
-            matrix[i][j] = randomValue;
-        }
+    compose_f_gx_hx(F f, G g, H h) : f(f), g(g), h(h) {}
+
+    template <typename T>
+    auto operator()(const T& x) {
+        return f(g(x), h(x));
     }
+};
+
+// Example functions to use
+int add(int a, int b) {
+    return a + b;
 }
 
-void squareMatrix(int n, vector<vector<double>> &matrix)
-{
-    vector<vector<double>> result(n, vector<double>(n, 0.0));
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < n; j++)
-        {
-            for (int k = 0; k < n; k++)
-            {
-                result[i][j] += matrix[i][k] * matrix[k][j];
-            }
-        }
-    }
-    matrix = result;
+int multiply(int a, int b) {
+    return a * b;
 }
 
-int main()
-{
-    srand(time(NULL));
+int square(int x) {
+    return x * x;
+}
 
-    vector<vector<double>> m1(100, vector<double>(100));
-    vector<vector<double>> m2(1000, vector<double>(1000));
-    vector<vector<double>> m3(10000, vector<double>(10000));
+int main() {
+    // Creating the composed functor
+    auto composed = compose_f_gx_hx<std::function<int(int, int)>, std::function<int(int)>, std::function<int(int)>>(add, square, multiply);
 
-    fillMatrix(100, m1);
-    fillMatrix(1000, m2);
-    fillMatrix(10000, m3);
+    // Example usage
+    int value = 5;
+    int result = composed(value);
 
-    duration<double> time(0);
+    std::cout << "Result of f(g(x), h(x)) where x = " << value << " is: " << result << std::endl;
 
-    for (int i = 0; i < 50; i++)
-    {
-        auto start = high_resolution_clock::now();
-        squareMatrix(100, m1);
-        auto end = high_resolution_clock::now();
-        time += duration_cast<duration<double>>(end - start);
-    }
-    cout << "100x100 matrix: " << time.count() / 50 << " s" << endl;
-
-    auto start = high_resolution_clock::now();
-    squareMatrix(1000, m2);
-    auto end = high_resolution_clock::now();
-    time = duration_cast<duration<double>>(end - start);
-    cout << "1000x1000 matrix: " << time.count() << " s" << endl;
-
-    start = high_resolution_clock::now();
-    squareMatrix(10000, m3);
-    end = high_resolution_clock::now();
-    time = duration_cast<duration<double>>(end - start);
-    cout << "10000x10000 matrix: " << time.count() << " s" << endl;
     return 0;
 }
