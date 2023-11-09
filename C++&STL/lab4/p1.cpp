@@ -9,7 +9,6 @@ struct compose_f_gx_hx {
     F f;
     G g;
     H h;
-
     compose_f_gx_hx(F f, G g, H h) : f(f), g(g), h(h) {}
     template<typename T>
     auto operator()(T x) const {

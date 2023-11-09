@@ -10,4 +10,3 @@ Then perform some calculations on these sets using the functors you have defined
 For each task, define a function object (with internal state) and use it in a for-each loop. When programming this task, 
 do not use accumulate() or similar functions.
 */
-
