@@ -17,16 +17,15 @@ int binomialCoefficient(int n, int k) {
             return calBinomial(n - 1, k - 1) + calBinomial(n - 1, k);
         }
     };
-
     return calBinomial(n, k);
 }
 
 int main() {
     vector<pair<int, int>> pairs = {
+        {1, 1},
         {5, 1},
         {27, 6}, 
-        {124, 4},
-        {-4, -6}, 
+        {150, -5}, 
     };
 
     for (const auto& pair : pairs) {

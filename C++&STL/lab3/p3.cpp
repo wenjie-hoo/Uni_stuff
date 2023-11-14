@@ -15,6 +15,6 @@ class harmonic<1> : public ratio<1, 1>
 
 int main()
 {
-    using n1 = harmonic<46>;
+    using n1 = harmonic<46>; //max 46
     cout << n1::num <<endl;
 }

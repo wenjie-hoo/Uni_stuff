@@ -10,3 +10,19 @@ Then perform some calculations on these sets using the functors you have defined
 For each task, define a function object (with internal state) and use it in a for-each loop. When programming this task, 
 do not use accumulate() or similar functions.
 */
+
+#include<iostream>
+#include<vector>
+#include<list>
+#include<set>
+
+using namespace std;
+
+vector < double > v;
+list < string > l;
+set < int > s;
+
+void fill(){}
+
+int main(){
+}

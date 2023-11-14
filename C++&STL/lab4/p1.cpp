@@ -37,7 +37,6 @@ int main() {
     function<int(int)> squareFunc = square;
     function<int(int)> doubleValueFunc = doubleValue;
     function<int(int, int)> subtractFunc  = subtract;
-
     compose_f_gx_hx<decltype(addFunc), decltype(squareFunc), decltype(doubleValueFunc)> func1(addFunc, squareFunc, doubleValueFunc);
     compose_f_gx_hx<decltype(subtractFunc), decltype(squareFunc), decltype(doubleValueFunc)> func2(subtractFunc, squareFunc, doubleValueFunc);
     
@@ -47,6 +46,5 @@ int main() {
 
     int res2 = func2(x);
     cout << "Res2:" << res2 << endl;
-
     return 0;
 }
