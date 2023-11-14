@@ -1,7 +1,6 @@
-from bs4 import BeautifulSoup
-import re
 import requests
 import time
+import threading
 
 # longest prefix suffix
 def find_diff(str1, str2):
@@ -15,31 +14,35 @@ def find_diff(str1, str2):
             r2 -= 1
     return (l1, r1)
 
-def remove_html(str):
-    soup = BeautifulSoup(str, features="lxml").text
-    str = re.compile('<.*?>')
-    str = re.compile('{.*?}')
-    str = re.sub(str, '', soup)
-    return str
-
-urls = ['https://www.bbc.com/news', 'https://news.google.com/', 'https://www.nbcnews.com/']
-sleep_time = 5
-
-while True:    
-    for url in urls:
-        website_content = {}
+def fetch_and_compare(url, website_content, sleep_time):
+    while True:
         response = requests.get(url)
         website_content[url] = response.text
         time.sleep(sleep_time)    
-        response_new= requests.get(url)
+        response_new = requests.get(url)
         l, r = find_diff(website_content[url], response_new.text)
         if website_content[url] != response_new.text:
             print(f'---------- new news {url} ----------') 
             print(f'Old content: \n{website_content[url][l:r]}')
             print("New content: ")
             new = response_new.text[l:r]
-            filtered_text = remove_html(new) # may not necessary
-            print(filtered_text)
+            print(new)
             print()
             website_content[url] = response_new.text
-    
+
+
+urls = ['https://www.bbc.com/news', 'https://news.google.com/', 'https://www.nbcnews.com/']
+sleep_time = 5
+
+website_content = {url: '' for url in urls}
+
+threads = []
+for url in urls:
+    thread = threading.Thread(target=fetch_and_compare, args=(url, website_content, sleep_time))
+    threads.append(thread)
+
+for thread in threads:
+    thread.start()
+
+for thread in threads:
+    thread.join()
