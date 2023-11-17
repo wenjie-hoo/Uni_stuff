@@ -35,7 +35,6 @@ public:
     }
 };
 
-// Functor to output every kth value starting from the p-th position
 template<typename T>
 class OutputEveryKth {
 private:
@@ -53,7 +52,6 @@ public:
     }
 };
 
-// Functor to determine the arithmetic mean
 template<typename T>
 class CalculateArithmeticMean {
 private:
@@ -67,11 +65,10 @@ public:
     }
 
     double getMean() const {
-        return count > 0 ? static_cast<double>(sum) / count : 0.0;
+        return (count != 0) ? static_cast<double>(sum) / static_cast<int>(count) : 0.0;
     }
 };
 
-// Functor to determine the minimum and maximum element
 template<typename T>
 class FindMinMax {
 private:
@@ -95,7 +92,6 @@ public:
     }
 };
 
-// Functor to determine the sum (or concatenation for character strings)
 template<typename T>
 class CalculateSum {
 private:
@@ -107,7 +103,6 @@ public:
     void operator()(const T& elem) {
         sum += elem;
     }
-
     T getSum() const {
         return sum;
     }
@@ -118,29 +113,35 @@ int main() {
     list<string> Tlist{"a", "b", "c", "d", "e", "f", "g", "h"};
     set<int> Tset{1, 3, 5, 7, 9, 2, 4, 6, 8, 10};
 
-    cout << "print in range" << endl;
+    cout << "----- print in range -----" << endl;
     PrintInRange<double> printInRange(3, 5);
     for_each(Tvect.begin(), Tvect.end(), printInRange);
     
-
+    cout << "\n----- every Kth -----" << endl;
     OutputEveryKth<string> outputEveryKth(3, 2);
     for_each(Tlist.begin(), Tlist.end(), outputEveryKth);
-    cout << endl;
 
+    cout <<  "\n----- Arithmetic Mean ------" << endl;
     CalculateArithmeticMean<int> calculateMean;
-    for_each(Tset.begin(), Tset.end(), calculateMean);
-    cout << "Arithmetic Mean: " << calculateMean.getMean() << endl;
+    for (const auto& num : Tset) {calculateMean(num);}
+    cout  << calculateMean.getMean() << endl;
 
-    // Task 4: Determine the minimum and maximum element
+
+    cout <<  "----- Min Max ------" << endl;
     FindMinMax<double> findMinMax;
-    for_each(Tvect.begin(), Tvect.end(), findMinMax);
-    auto minMaxPair = findMinMax.getMinMax();
-    cout << "Min: " << minMaxPair.first << ", Max: " << minMaxPair.second << endl;
+    auto mm = for_each(Tvect.begin(), Tvect.end(), findMinMax);
+    cout << " Min:" <<mm.getMinMax().first << " Max:" << mm.getMinMax().second<< endl;
 
-    // Task 5: Determine the sum (concatenation for character strings)
+    cout << "----- Concatenated String -----" << endl;
     CalculateSum<string> calculateStringSum;
-    for_each(Tlist.begin(), Tlist.end(), calculateStringSum);
-    cout << "Concatenated String: " << calculateStringSum.getSum() << endl;
+    for (const auto& str : Tlist){calculateStringSum(str);}
+    cout << calculateStringSum.getSum() << endl;
+
+    cout << "----- Concatenated String -----" << endl;
+    CalculateSum<int> calculateStringSu_1;
+    for (const auto& num : Tset){calculateStringSu_1(num);}
+    cout << calculateStringSu_1.getSum() << endl;
 
     return 0;
+
 }
