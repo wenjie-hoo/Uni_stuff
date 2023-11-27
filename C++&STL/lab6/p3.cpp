@@ -22,18 +22,16 @@ auto findMaxFrequencyElements(const vector<int>& numbers) {
             maxFrequencyElements.push_back(entry);
         }
     }
-
     return maxFrequencyElements;
 }
 
 int main() {
-    vector<int> test = {1, 1, 3, 5, 8, 9, 5, 8, 8, 5};
+    vector<int> test = {1, 1, 1, 5, 8, 9, 5, 8, 8, 5};
     vector<pair<int, int>> res = findMaxFrequencyElements(test);
 
     for_each(res.begin(), res.end(), [](const auto& element) {
         cout << "(" << element.first << "," << element.second << ")" << endl;
     });
-
 
     return 0;
 }

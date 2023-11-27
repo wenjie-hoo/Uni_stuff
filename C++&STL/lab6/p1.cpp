@@ -85,30 +85,30 @@ int main(){
 
     cout << "\nAfter slimming down:\n";
     slimDown(persons);
-    for_each(persons.begin(), persons.end(), [](const Person &person)
-             { cout << person.name << " " << person.surname << " Weight: " << person.getBMI() << "\n"; });
+    for_each(persons.begin(), persons.end(), [](const Person &person){ 
+        cout << person.name << " " << person.surname << " Weight: " << person.getBMI() << "\n"; });
 
     deque<Person> heavy, light;
     divideByWeight(persons, heavy, light);
 
     cout << "\nHeavy people:\n";
-    for_each(light.begin(), light.end(), [](const Person &person)
-             { cout << person.name << " " << person.surname << " Weight: " << person.weight << "\n"; });
+    for_each(light.begin(), light.end(), [](const Person &person){ 
+        cout << person.name << " " << person.surname << " Weight: " << person.weight << "\n"; });
 
     cout << "\nLight people:\n";
-    for_each(light.begin(), light.end(), [](const Person &person)
-             { cout << person.name << " " << person.surname << " Weight: " << person.weight << "\n"; });
+    for_each(light.begin(), light.end(), [](const Person &person){ 
+        cout << person.name << " " << person.surname << " Weight: " << person.weight << "\n"; });
 
     middleHeightPerson(persons);
 
     cout << "\nMiddle height person set to position 5:\n";
-    for_each(light.begin(), light.end(), [](const Person &person)
-             { cout << person.name << " " << person.surname << " Height: " << person.weight << "\n"; });
+    for_each(light.begin(), light.end(), [](const Person &person){
+        cout << person.name << " " << person.surname << " Height: " << person.weight << "\n"; });
 
     randomRearrange(persons);
     cout << "\nRandomly rearranged:\n";
-    for_each(light.begin(), light.end(), [](const Person &person)
-             { cout << person.name << " " << person.surname << " " << person.weight << "\n"; });
+    for_each(light.begin(), light.end(), [](const Person &person){ 
+        cout << person.name << " " << person.surname << " " << person.weight << "\n"; });
 
     oldestAndYoungest(persons);
     return 0;

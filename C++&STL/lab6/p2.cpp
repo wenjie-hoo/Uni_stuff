@@ -74,7 +74,7 @@ int main() {
         return point.getLuminance() < 64;
     });
     
-    cout << "\nDark points with luminance below 64:\n";
+    cout << "\nluminance below 64:\n";
     for_each(darkPoints.begin(), darkPoints.end(),[](const Point &darkPoint){
         cout << ("name: ") << darkPoint.name << (" luminance:")<< darkPoint.getLuminance() << "\n";
     });
