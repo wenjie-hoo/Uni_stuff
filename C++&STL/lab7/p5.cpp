@@ -11,14 +11,6 @@ complex<double> zetaFunction(complex<double> z, int iter) {
     return res;
 }
 
-complex<double> gammaEulera(complex<double> z, int iters) {
-    complex<double> res = 1.0 / z;
-    for (double n = 1; n <= iters; ++n) {
-        res *= pow((1.0 + 1.0 / n), z) / (1.0 + (z / n));
-    }
-    return res;
-}
-
 
 int main() {
     int iterations = 100;  
@@ -26,9 +18,7 @@ int main() {
 
     ofstream outputFile("p5.csv");
     outputFile << "File generated and saved " << endl;
-
     outputFile.close();
-
 
     return 0;
 }
