@@ -9,7 +9,7 @@ class SnakeGame:
         self.GRID_SIZE = grid_size
         self.grid = np.zeros((grid_size, grid_size))
         self.snake = deque([(0, 0)])
-        self.direction = 'RIGHT'  # Initial direction
+        self.direction = 'RIGHT'  # init dire
         self.place_random_squares()
 
         self.fig, self.ax = plt.subplots()
@@ -20,10 +20,17 @@ class SnakeGame:
 
     def place_random_squares(self):
         for _ in range(10):
+            self.place_random_square()
+            
+    def place_random_square(self):
+        x, y = self.get_random_empty_location()
+        self.grid[x, y] = 1
+
+    def get_random_empty_location(self):
+        x, y = random.randint(0, self.GRID_SIZE - 1), random.randint(0, self.GRID_SIZE - 1)
+        while self.grid[x, y] == 1:
             x, y = random.randint(0, self.GRID_SIZE - 1), random.randint(0, self.GRID_SIZE - 1)
-            while self.grid[x, y] == 1:
-                x, y = random.randint(0, self.GRID_SIZE - 1), random.randint(0, self.GRID_SIZE - 1)
-            self.grid[x, y] = 1
+        return x, y
 
     def update(self, _):
         self.update_game()
@@ -33,47 +40,52 @@ class SnakeGame:
 
     def check_collision(self):
         head = self.snake[0]
-        if not (0 <= head[0] < self.GRID_SIZE and 0 <= head[1] < self.GRID_SIZE):
-            return True
-        if head in list(self.snake)[1:] or self.grid[head[0], head[1]] == 1:
-            return True
-        return False
+        return not (0 <= head[0] < self.GRID_SIZE and 0 <= head[1] < self.GRID_SIZE) or head in list(self.snake)[1:] or self.grid[head[0], head[1]] == 1
 
     def update_game(self):
         head = self.snake[0]
         possible_directions = ['UP', 'DOWN', 'LEFT', 'RIGHT']
-        # Choose a random direction
-        new_direction = random.choice(possible_directions)
-        self.direction = new_direction
+        self.direction = random.choice(possible_directions)
 
-        if self.direction == 'UP':
-            new_head = (head[0] - 1, head[1])
-        elif self.direction == 'DOWN':
-            new_head = (head[0] + 1, head[1])
-        elif self.direction == 'LEFT':
-            new_head = (head[0], head[1] - 1)
-        elif self.direction == 'RIGHT':
-            new_head = (head[0], head[1] + 1)
+        if self.check_collision():
+            print("Colliding with itself")
+            if infinity_fun==False:
+                self.game_over()
+                return
 
-        if 0 <= new_head[0] < self.GRID_SIZE and 0 <= new_head[1] < self.GRID_SIZE:
+        new_head = self.calculate_new_head(head)
+
+        if self.is_inside_grid(new_head):
             self.snake.appendleft(new_head)
             if not self.grid[new_head[0], new_head[1]] == 1:
-                tail = self.snake.pop()
-                self.grid[tail[0], tail[1]] = 0
+                self.remove_tail()
             else:
-                x, y = random.randint(0, self.GRID_SIZE - 1), random.randint(0, self.GRID_SIZE - 1)
-                while self.grid[x, y] == 1:
-                    x, y = random.randint(0, self.GRID_SIZE - 1), random.randint(0, self.GRID_SIZE - 1)
-                self.grid[x, y] = 1
+                self.place_random_square()
         else:
             self.game_over()
+
+    def calculate_new_head(self, head):
+        if self.direction == 'UP':
+            return (head[0] - 1, head[1])
+        elif self.direction == 'DOWN':
+            return (head[0] + 1, head[1])
+        elif self.direction == 'LEFT':
+            return (head[0], head[1] - 1)
+        elif self.direction == 'RIGHT':
+            return (head[0], head[1] + 1)
+
+    def is_inside_grid(self, position):
+        return 0 <= position[0] < self.GRID_SIZE and 0 <= position[1] < self.GRID_SIZE
+
+    def remove_tail(self):
+        tail = self.snake.pop()
+        self.grid[tail[0], tail[1]] = 0
 
     def update_snake_squares(self):
         for square in self.snake_squares:
             square.remove()
 
         self.snake_squares = []
-
         for i, segment in enumerate(self.snake):
             x, y = segment
             facecolor = 'red' if i == 0 else 'green'
@@ -85,9 +97,10 @@ class SnakeGame:
         print("Game Over!")
 
     def play(self):
-        ani = animation.FuncAnimation(self.fig, self.update, frames=500, repeat=False, blit=True, interval=100)
+        _ = animation.FuncAnimation(self.fig, self.update, frames=500, repeat=False, blit=True, interval=100)
         plt.show()
 
 if __name__ == "__main__":
+    infinity_fun = True
     game = SnakeGame(grid_size=10)
     game.play()
