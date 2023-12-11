@@ -1,6 +1,7 @@
 [submodule "NN_NLP"]
 	path = NN_NLP
 	url = git@github.com:wenjie-hoo/nn_uwr_22.git
+	ignore = untracked
 [submodule "ICC"]
 	path = ICC
 	url = git@github.com:wenjie-hoo/icc_uwr_22.git
