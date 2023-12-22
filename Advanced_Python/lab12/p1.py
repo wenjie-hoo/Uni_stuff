@@ -229,9 +229,4 @@ python p1.py delete events --values id 3
 
 python p1.py add event_attendees --values event_id 1 attendee_id 1
 
-example of reading a table and it returns
-❯ python p1.py read events;
-Data in 'events' table:
-{'_sa_instance_state': <sqlalchemy.orm.state.InstanceState object at 0x7f77c58000a0>, 'start_time': datetime.datetime(2023, 12, 12, 12, 0), 'end_time': datetime.datetime(2023, 12, 12, 14, 0), 'event_type_id': 1, 'description': 'math', 'id': 1}
-{'_sa_instance_state': <sqlalchemy.orm.state.InstanceState object at 0x7f77c5800520>, 'start_time': datetime.datetime(2023, 12, 12, 14, 0), 'end_time': datetime.datetime(2023, 12, 12, 16, 0), 'event_type_id': 2, 'description': 'english', 'id': 4}
 """
