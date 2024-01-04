@@ -27,7 +27,7 @@ int main(int argc, char const *argv[]) {
             time_t ctime = to_time_t(time);
             tm tm = *localtime(&ctime);
 
-            wstringstream wss;  // Use wstringstream
+            wstringstream wss;
             wss << put_time(&tm, L"%F %T");
             wcout << "Last write time: " << wss.str() << endl;
         } else {
