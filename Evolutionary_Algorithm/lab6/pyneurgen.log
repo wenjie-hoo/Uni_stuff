@@ -20007,3 +20007,146 @@ self.set_bnf_variable('<fitness>', fitness)
 
 2024-01-22 18:17:41,538 stopping processing due to max generation
 2024-01-22 18:17:41,538 completed run: generations: 1000, best member:23 fitness: 6.1309921837
+2024-01-25 12:57:19,808 started run
+2024-01-25 12:57:19,928 Finished generation: 0 Max generations: 1000
+2024-01-25 12:57:19,928 best_value: 13.8599930016 median: 100.0 mean: 1306.63675775
+2024-01-25 12:57:19,928 import math
+total = 0.0
+for i in xrange(100):
+    value = float(i) / float(100)
+    total += abs(pow(pow(value, 1.9), 4.2) - pow(value, 3))
+fitness = total
+self.set_bnf_variable('<fitness>', fitness)
+
+2024-01-25 12:57:20,033 Finished generation: 1 Max generations: 1000
+2024-01-25 12:57:20,033 best_value: 13.7119730984 median: 75.1945262336 mean: 67.2612125289
+2024-01-25 12:57:20,033 import math
+total = 0.0
+for i in xrange(100):
+    value = float(i) / float(100)
+    total += abs((math.sin((pow(value, 7.4)))) - pow(value, 3))
+fitness = total
+self.set_bnf_variable('<fitness>', fitness)
+
+2024-01-25 12:57:20,124 Finished generation: 2 Max generations: 1000
+2024-01-25 12:57:20,124 best_value: 6.83119136497 median: 24.9975 mean: 47.8683278873
+2024-01-25 12:57:20,125 import math
+total = 0.0
+for i in xrange(100):
+    value = float(i) / float(100)
+    total += abs(value*math.sin(value) - pow(value, 3))
+fitness = total
+self.set_bnf_variable('<fitness>', fitness)
+
+2024-01-25 12:57:20,226 Finished generation: 3 Max generations: 1000
+2024-01-25 12:57:20,226 best_value: 6.83119136497 median: 23.9974206409 mean: 31.9690444741
+2024-01-25 12:57:20,226 import math
+total = 0.0
+for i in xrange(100):
+    value = float(i) / float(100)
+    total += abs(value*math.sin(value) - pow(value, 3))
+fitness = total
+self.set_bnf_variable('<fitness>', fitness)
+
+2024-01-25 12:57:20,309 Finished generation: 4 Max generations: 1000
+2024-01-25 12:57:20,309 best_value: 6.83119136497 median: 21.9821944851 mean: 24.4966094011
+2024-01-25 12:57:20,309 import math
+total = 0.0
+for i in xrange(100):
+    value = float(i) / float(100)
+    total += abs(value*math.sin(value) - pow(value, 3))
+fitness = total
+self.set_bnf_variable('<fitness>', fitness)
+
+2024-01-25 12:57:20,391 Finished generation: 5 Max generations: 1000
+2024-01-25 12:57:20,391 best_value: 1.61670225333 median: 19.7291216758 mean: 24.0877737413
+2024-01-25 12:57:20,391 import math
+total = 0.0
+for i in xrange(100):
+    value = float(i) / float(100)
+    total += abs((math.sin((pow(value, 2.9)))) - pow(value, 3))
+fitness = total
+self.set_bnf_variable('<fitness>', fitness)
+
+2024-01-25 12:57:20,465 Finished generation: 6 Max generations: 1000
+2024-01-25 12:57:20,466 best_value: 1.47037991256 median: 13.7119730984 mean: 30.5832332012
+2024-01-25 12:57:20,466 import math
+total = 0.0
+for i in xrange(100):
+    value = float(i) / float(100)
+    total += abs(pow(pow(value, 6.5), 0.5) - pow(value, 3))
+fitness = total
+self.set_bnf_variable('<fitness>', fitness)
+
+2024-01-25 12:57:20,532 Finished generation: 7 Max generations: 1000
+2024-01-25 12:57:20,532 best_value: 1.47037991256 median: 12.2522541713 mean: 28329.0950526
+2024-01-25 12:57:20,532 import math
+total = 0.0
+for i in xrange(100):
+    value = float(i) / float(100)
+    total += abs(pow(pow(value, 6.5), 0.5) - pow(value, 3))
+fitness = total
+self.set_bnf_variable('<fitness>', fitness)
+
+2024-01-25 12:57:20,608 Finished generation: 8 Max generations: 1000
+2024-01-25 12:57:20,609 best_value: 1.47037991256 median: 6.83119136497 mean: 23.6985481689
+2024-01-25 12:57:20,609 import math
+total = 0.0
+for i in xrange(100):
+    value = float(i) / float(100)
+    total += abs(pow(pow(value, 6.5), 0.5) - pow(value, 3))
+fitness = total
+self.set_bnf_variable('<fitness>', fitness)
+
+2024-01-25 12:57:20,672 Finished generation: 9 Max generations: 1000
+2024-01-25 12:57:20,672 best_value: 1.47037991256 median: 6.83119136497 mean: 38.5073284209
+2024-01-25 12:57:20,672 import math
+total = 0.0
+for i in xrange(100):
+    value = float(i) / float(100)
+    total += abs(pow(pow(value, 6.5), 0.5) - pow(value, 3))
+fitness = total
+self.set_bnf_variable('<fitness>', fitness)
+
+2024-01-25 12:57:20,739 Finished generation: 10 Max generations: 1000
+2024-01-25 12:57:20,740 best_value: 0.640942314743 median: 6.83119136497 mean: 11.7446623448
+2024-01-25 12:57:20,740 import math
+total = 0.0
+for i in xrange(100):
+    value = float(i) / float(100)
+    total += abs((((pow(value, 2.9)))) - pow(value, 3))
+fitness = total
+self.set_bnf_variable('<fitness>', fitness)
+
+2024-01-25 12:57:20,817 Finished generation: 11 Max generations: 1000
+2024-01-25 12:57:20,818 best_value: 0.640942314743 median: 6.83119136497 mean: 13.9828460478
+2024-01-25 12:57:20,818 import math
+total = 0.0
+for i in xrange(100):
+    value = float(i) / float(100)
+    total += abs((((pow(value, 2.9)))) - pow(value, 3))
+fitness = total
+self.set_bnf_variable('<fitness>', fitness)
+
+2024-01-25 12:57:20,908 Finished generation: 12 Max generations: 1000
+2024-01-25 12:57:20,909 best_value: 0.640942314743 median: 6.83119136497 mean: 13.2399873184
+2024-01-25 12:57:20,909 import math
+total = 0.0
+for i in xrange(100):
+    value = float(i) / float(100)
+    total += abs((((pow(value, 2.9)))) - pow(value, 3))
+fitness = total
+self.set_bnf_variable('<fitness>', fitness)
+
+2024-01-25 12:57:20,990 Finished generation: 13 Max generations: 1000
+2024-01-25 12:57:20,990 best_value: 0.640942314743 median: 4.91756971151 mean: 235.280462437
+2024-01-25 12:57:20,990 import math
+total = 0.0
+for i in xrange(100):
+    value = float(i) / float(100)
+    total += abs((((pow(value, 2.9)))) - pow(value, 3))
+fitness = total
+self.set_bnf_variable('<fitness>', fitness)
+
+2024-01-25 12:57:21,022 stopping processing due to best value, 5.64032463313e-16, better than target value, 0.01
+2024-01-25 12:57:21,022 completed run: generations: 14, best member:1 fitness: 5.64032463313e-16
